@@ -63,17 +63,7 @@
                             <h5><?= $categorie['nom'] ?></h5>
                         </div>
                     </div>
-                </a>
-
-                <!-- <div class="cartes col">
-                    <a href="recettes.php?id_categorie=<?= $categorie['id'] ?>">
-                        <img src='<?= "image/" . $categorie['image'] ?>' width="100" height="auto" alt="">
-                        <div>
-                            <h5><?= $categorie['nom'] ?></h5>
-                        </div>
-                    </a>
-                </div> -->
-
+                </a>                
 
             <?php } ?>
 
