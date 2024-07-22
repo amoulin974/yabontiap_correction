@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="CSS/styles.css">
     <link rel="stylesheet" type="text/css" href="node_modules/datatables.net-bs5/css/dataTables.bootstrap5.css">
     <!-- <link rel='stylesheet' type='text/css' href='style.css'> -->
-    <title>Yabon ! - Les recettes sous forme de tableau</title>
+    <title>Yabon ! - Les categories sous forme de tableau</title>
 </head>
 <body class="container">
     
@@ -28,11 +28,12 @@
                 <a class="nav-link" href="recettes.php">Recettes</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link active" href="recettes_tableau.php">Recette_tableau</a>
+                <a class="nav-link active" href="recettes_tableau.php">Recettes tableau</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="categories_tableau.php">Catégories tableau</a>
+                <a class="nav-link active" href="categories_tableau.php">Catégories tableau</a>
                 </li>
+                
             </ul>
             </div>
         </div>
@@ -41,14 +42,12 @@
 
 
     <main>
-        <h1>Les recettes</h1>
+        <h1>Les catégories</h1>
         <table id="matable" class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Image</th>
                     <th>Nom</th>
-                    <th>Catégorie</th>
-
                 </tr>
             </thead>
             <tbody>
@@ -67,23 +66,22 @@
 
         //Construction de la requête
 
-        $sql = "SELECT R.id as 'recette_id', R.nom as 'recette_nom', C.nom as 'categorie_nom', R.image  as 'recette_image' 
-        FROM yabontiap_recette R 
-        INNER JOIN yabontiap_categorie C ON R.id_categorie = C.id";
+        $sql = "SELECT C.id as 'categorie_id', C.nom as 'categorie_nom', C.image  as 'categorie_image' 
+        FROM yabontiap_categorie C ";
+
 
         $pdoStatement = $pdo->prepare($sql);
         $pdoStatement->execute();
-        $recettes = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+        $categories = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
 
-                foreach ($recettes as $recette) {
+
+                foreach ($categories as $categorie) {
                     ?>
 
                     <!--Les cartes-->
                     <tr>
-                        <td><img src='<?= "image/" . $recette['recette_image'] ?>' alt=""></td>
-                        <td><a href="recette.php?id_recette=<?=$recette['recette_id']?>"><?= $recette['recette_nom'] ?></a></td>
-                        <td><?= $recette['categorie_nom'] ?></td>
-
+                        <td><img class="img-thumbnail" src='<?= "image/" . $categorie['categorie_image'] ?>' alt=""></td>
+                        <td><a href="categorie.php?id_categorie=<?=$categorie['categorie_id']?>"><?= $categorie['categorie_nom'] ?></a></td>
                     </tr>
 
 
