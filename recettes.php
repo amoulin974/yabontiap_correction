@@ -30,6 +30,9 @@
                 <li class="nav-item">
                 <a class="nav-link" href="recettes_tableau.php">Recette_tableau</a>
                 </li>
+                <li class="nav-item">
+                <a class="nav-link" href="categories_tableau.php">Catégories tableau</a>
+                </li>
             </ul>
             </div>
         </div>

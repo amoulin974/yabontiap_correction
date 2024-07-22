@@ -2,7 +2,7 @@
 //Récupération de la recette  grace à l'id transmis dans le GET
 //ATTENTION Cette méthode de travail n'est pas sécurisée. LA bonne méthode sera abordée ultérieurement
 
-$id_recette = isset($_GET['id_recette'])?$_GET['id_recette']:null;
+$id_categorie = isset($_GET['id_categorie'])?$_GET['id_categorie']:null;
 
 
 
@@ -10,11 +10,11 @@ $id_recette = isset($_GET['id_recette'])?$_GET['id_recette']:null;
 $pdo = new PDO('mysql:host=localhost;dbname=yabontiap_bd', 'root', '');
 
 //Construction de la requête
-$sql = "SELECT * FROM yabontiap_recette R WHERE R.id=:id_recette";
+$sql = "SELECT * FROM yabontiap_categorie C WHERE C.id=:id_categorie";
 
 $pdoStatement = $pdo->prepare($sql);
-$pdoStatement->execute(array(':id_recette' => $id_recette));
-$recette = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+$pdoStatement->execute(array(':id_categorie' => $id_categorie));
+$categorie = $pdoStatement->fetch(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -25,7 +25,7 @@ $recette = $pdoStatement->fetch(PDO::FETCH_ASSOC);
     <link rel="stylesheet" type="text/css" href="CSS/styles.css">
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <!-- <link rel='stylesheet' type='text/css' href='style.css'> -->
-    <title>Yabontiap ! - <?= $recette['nom']?></title>
+    <title>Yabontiap ! - <?= $categorie['nom']?></title>
 </head>
 <body class="container">
     
@@ -44,14 +44,15 @@ $recette = $pdoStatement->fetch(PDO::FETCH_ASSOC);
                 <a class="nav-link " aria-current="page" href="index.php">Catégories</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link active" href="recettes.php">Recettes</a>
+                <a class="nav-link " href="recettes.php">Recettes</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="recettes_tableau.php">Recette_tableau</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="categories_tableau.php">Catégories tableau</a>
+                <a class="nav-link active" href="categories_tableau.php">Catégories tableau</a>
                 </li>
+  
             </ul>
             </div>
         </div>
@@ -60,33 +61,16 @@ $recette = $pdoStatement->fetch(PDO::FETCH_ASSOC);
 
 
     <main>
-        <h1><?= $recette['nom'] ?></h1>
+        <h1>La catégorie : <?= $categorie['nom'] ?></h1>
 <!--                Affichage de la description de la recette et de l'image-->
         <div class="row">
             <div class="col-md-9">
-                <img src="image/<?= $recette['image'] ?>"  alt="">
-                <p><?= $recette['description'] ?></p>
+                <img src="image/<?= $categorie['image'] ?>"  alt="">
+
 
 
             </div>
-            <div class="col-md-3">
-                <h6>Ingrédients</h6>
-
-                <ul>
-                    <?php
-
-                    $sql = "SELECT * FROM yabontiap_recette_ingredient RI INNER JOIN yabontiap_ingredient I ON RI.id_ingredient=I.id WHERE RI.id_recette=:id_recette";
-                    $pdoStatement = $pdo->prepare($sql);
-                    $pdoStatement->execute(array(':id_recette' => $id_recette));
-                    $ingredients = $pdoStatement->fetchall(PDO::FETCH_ASSOC);
-
-                    foreach ($ingredients as $ingredient){
-                        echo "<li>". $ingredient['nom'] ." - ". $ingredient['quantite']."</li>" ;
-                    }
-                    ?>
-
-                </ul>
-            </div>
+           
         </div>
         
     </main>
