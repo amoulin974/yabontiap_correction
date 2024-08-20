@@ -14,5 +14,6 @@ $template = $twig->load('index.html.twig');
 
 echo $template->render(array(
     'categories' => $categories,
-    'menu' => 'categories'
+    'menu' => 'categories',
+    // 'description' => "Le site des recettes de cuisine de l'IUT de Bayonne"
 ));
