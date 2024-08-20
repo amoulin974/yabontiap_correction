@@ -38,5 +38,6 @@ $categories = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
 $template = $twig->load('index.html.twig');
 
 echo $template->render(array(
-    'categories' => $categories
+    'categories' => $categories,
+    'menu' => 'categories'
 ));
