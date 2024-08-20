@@ -44,4 +44,5 @@ $twig->addExtension(new IntlExtension());
  $template = $twig->load('categories_tableau.html.twig');
  echo $template->render(array(
         'categories' => $categories,
+        'menu' => 'categories_tableau'
     ));
