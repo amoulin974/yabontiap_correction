@@ -10,11 +10,8 @@ require_once 'include.php';
 $idCategorie = isset($_GET['id_categorie']) ? $_GET['id_categorie'] : null;
 
 
-//Connexion à la base de données en pdo
-$pdo = new PDO('mysql:host=localhost;dbname=yabontiap_bd', 'root', '');
-
 //Construction de la requête
-$sql = "SELECT * FROM yabontiap_recette R";
+$sql = "SELECT * FROM " . PREFIXE_TABLE . "recette R";
 if (isset($idCategorie)) {
     $sql .= " WHERE R.id_categorie=:id_categorie";
 }
