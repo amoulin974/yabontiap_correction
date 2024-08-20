@@ -60,8 +60,8 @@ $recettes = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
 $template = $twig->load('recettes.html.twig');
            
 echo $template->render(array(
-    'recettes' => $recettes 
-
+    'recettes' => $recettes, 
+    'menu' => 'recettes'
 ));
            
        
