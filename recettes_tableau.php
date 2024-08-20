@@ -44,5 +44,6 @@ $twig->addExtension(new IntlExtension());
 
  echo $template->render(array(
     'recettes' => $recettes,
+    'menu' => 'recettes_tableau'
 
 ));
