@@ -53,5 +53,6 @@ $template = $twig->load('recette.html.twig');
 
 echo $template->render(array(
     'recette' => $recette,
+    'menu' => 'recettes'
 ));
 
