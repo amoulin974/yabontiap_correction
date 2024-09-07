@@ -3,18 +3,16 @@
 //Ajout du code commun à toutes les pages
 require_once 'include.php';
 
-//Récupération des catégories en base de données
-// $sql = "SELECT * 
-// FROM " . PREFIXE_TABLE . "categorie";
-// $pdoStatement = $pdo->prepare($sql);
-// $pdoStatement->execute();
-// $categories = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
-
+//recupération des catégories
 $managerCategorie = new CategorieDao($pdo);
-$categories = $managerCategorie->findAll();
-        
+$tableau = $managerCategorie->findAllAssoc();
+$categories = $managerCategorie->hydrateAll($tableau);
+
+//Choix du template
 $template = $twig->load('index.html.twig');
 
+
+//Affichage de la page
 echo $template->render(array(
     'categories' => $categories,
     'menu' => 'categories',
