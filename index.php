@@ -4,11 +4,14 @@
 require_once 'include.php';
 
 //Récupération des catégories en base de données
-$sql = "SELECT * 
-FROM " . PREFIXE_TABLE . "categorie";
-$pdoStatement = $pdo->prepare($sql);
-$pdoStatement->execute();
-$categories = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+// $sql = "SELECT * 
+// FROM " . PREFIXE_TABLE . "categorie";
+// $pdoStatement = $pdo->prepare($sql);
+// $pdoStatement->execute();
+// $categories = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+
+$managerCategorie = new CategorieDao($pdo);
+$categories = $managerCategorie->findAll();
         
 $template = $twig->load('index.html.twig');
 

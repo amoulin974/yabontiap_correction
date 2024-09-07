@@ -11,3 +11,7 @@ require_once 'config/twig.php';
 
 //Ajout du code pour initialiser la connexion à la base de données
 require_once 'config/connexion.php';
+
+//Ajout des modèles
+require_once 'modeles/categorie.class.php';
+require_once 'modeles/categorie.dao.php';
