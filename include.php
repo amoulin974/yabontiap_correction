@@ -9,8 +9,8 @@ require_once 'config/constantes.php';
 //Ajout du code pour initialiser twig
 require_once 'config/twig.php';
 
-//Ajout du code pour initialiser la connexion à la base de données
-require_once 'config/connexion.php';
+//Ajout du modèle qui gère la connexion mysql
+require_once 'modeles/bd.class.php';
 
 //Ajout des modèles
 require_once 'modeles/categorie.class.php';
