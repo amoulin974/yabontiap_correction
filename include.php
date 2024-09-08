@@ -15,3 +15,5 @@ require_once 'modeles/bd.class.php';
 //Ajout des modèles
 require_once 'modeles/categorie.class.php';
 require_once 'modeles/categorie.dao.php';
+require_once 'modeles/ingredient.class.php';
+require_once 'modeles/ingredient.dao.php';

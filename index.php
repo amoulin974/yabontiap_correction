@@ -3,6 +3,7 @@
 //Ajout du code commun à toutes les pages
 require_once 'include.php';
 $pdo = Bd::getInstance()->getConnexion();
+
 //recupération des catégories
 $managerCategorie = new CategorieDao($pdo);
 $tableau = $managerCategorie->findAllAssoc();
