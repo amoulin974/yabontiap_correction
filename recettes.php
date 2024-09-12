@@ -10,30 +10,31 @@ require_once 'include.php';
 $idCategorie = isset($_GET['id_categorie']) ? $_GET['id_categorie'] : null;
 
 
-//Construction de la requête
-$sql = "SELECT * FROM " . PREFIXE_TABLE . "recette R";
-if (isset($idCategorie)) {
-    $sql .= " WHERE R.id_categorie=:id_categorie";
+//Connexion à la base de données
+$db= Bd::getInstance();
+$pdo=$db->getConnexion();
+
+//Récupération des recettes
+$managerRecette = new RecetteDao($pdo);
+
+if ($idCategorie == null) {
+    $recettes = $managerRecette->findAll();
+} else {
+    $recettes = $managerRecette->findByCategorie($idCategorie);
 }
 
-
-$pdoStatement = $pdo->prepare($sql);
-
-if (isset($idCategorie)) {
-    $pdoStatement->execute(array(':id_categorie' => $idCategorie));
-}else{
-    $pdoStatement->execute();
-}
-
-$recettes = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
-
-
+//Génère la vue
 $template = $twig->load('recettes.html.twig');
            
 echo $template->render(array(
     'recettes' => $recettes, 
     'menu' => 'recettes'
 ));
+
+
+
+
+
            
        
 

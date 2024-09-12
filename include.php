@@ -17,3 +17,5 @@ require_once 'modeles/categorie.class.php';
 require_once 'modeles/categorie.dao.php';
 require_once 'modeles/ingredient.class.php';
 require_once 'modeles/ingredient.dao.php';
+require_once 'modeles/recette.class.php';
+require_once 'modeles/recette.dao.php';
