@@ -3,18 +3,17 @@
 //Ajout du code commun à toutes les pages
 require_once 'include.php';
 
+//connexion à la base de données
+$pdo = Bd::getInstance()->getConnexion();
+
+//Récupération des recettes à l'aide de la méthode findAllWithDetail() de RecetteDao
+$managerRecette = new RecetteDao($pdo);
+$recettes = $managerRecette->findAllWithDetail();
 
 
- //Construction de la requête
 
- $sql = "SELECT R.id as 'recette_id', R.nom as 'recette_nom', C.nom as 'categorie_nom', R.image  as 'recette_image' 
- FROM " . PREFIXE_TABLE . "recette R 
- INNER JOIN " . PREFIXE_TABLE . "categorie C ON R.id_categorie = C.id";
 
- $pdoStatement = $pdo->prepare($sql);
- $pdoStatement->execute();
- $recettes = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
-
+//Générer la vue
  $template = $twig->load('recettes_tableau.html.twig');
 
  echo $template->render(array(
@@ -22,3 +21,5 @@ require_once 'include.php';
     'menu' => 'recettes_tableau'
 
 ));
+
+ 

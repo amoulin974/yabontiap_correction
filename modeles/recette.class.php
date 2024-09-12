@@ -6,12 +6,14 @@ class Recette{
     private null|string $nom;
     private null|string $description;
     private null|string $image;
+    private null|Categorie $categorie;
 
-    public function __construct(?int $id = null, ?string $nom = null, ?string $description = null, ?string $image = null){
+    public function __construct(?int $id = null, ?string $nom = null, ?string $description = null, ?string $image = null, ?Categorie $categorie = null){
         $this->id = $id;
         $this->nom = $nom;
         $this->description = $description;
         $this->image = $image;
+        $this->categorie = $categorie;
     }
 
     
@@ -86,6 +88,24 @@ class Recette{
     public function setImage(?string $image): void
     {
         $this->image = $image;
+
+    }
+
+    /**
+     * Get the value of categorie
+     */ 
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * Set the value of categorie
+     *
+     */ 
+    public function setCategorie(?Categorie $categorie): void
+    {
+        $this->categorie = $categorie;
 
     }
 }
