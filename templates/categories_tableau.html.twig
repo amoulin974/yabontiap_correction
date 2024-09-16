@@ -15,8 +15,8 @@
                 {% for categorie in categories %}           
 
                     <tr>
-                        <td><img src='image/{{categorie.categorie_image}}' alt=""></td>
-                        <td><a href="categorie.php?id_categorie={{categorie.categorie_id}}">{{categorie.categorie_nom}}</a></td>
+                        <td><img src='image/{{categorie.image}}' alt=""></td>
+                        <td><a href="categorie.php?id_categorie={{categorie.id}}">{{categorie.nom}}</a></td>
                     </tr>
 
                 {% endfor %}

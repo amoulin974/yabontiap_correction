@@ -8,15 +8,13 @@ require_once 'include.php';
 
 $id_categorie = isset($_GET['id_categorie'])?$_GET['id_categorie']:null;
 
+//connexion à la base de données
+$pdo= Bd::getInstance()->getConnexion();
+ 
 
-
-
-//Construction de la requête
-$sql = "SELECT * FROM " . PREFIXE_TABLE . "categorie C WHERE C.id=:id_categorie";
-
-$pdoStatement = $pdo->prepare($sql);
-$pdoStatement->execute(array(':id_categorie' => $id_categorie));
-$categorie = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+//Récupération de la catégorie
+$managerCategorie = new CategorieDao($pdo);
+$categorie = $managerCategorie->find($id_categorie);
 
 
 $template = $twig->load('categorie.html.twig');
