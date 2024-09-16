@@ -19,3 +19,5 @@ require_once 'modeles/ingredient.class.php';
 require_once 'modeles/ingredient.dao.php';
 require_once 'modeles/recette.class.php';
 require_once 'modeles/recette.dao.php';
+require_once 'modeles/ingredient_quantifie.class.php';
+require_once 'modeles/ingredient_quantifie.dao.php';

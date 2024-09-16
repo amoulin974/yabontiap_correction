@@ -1,14 +1,14 @@
 {% extends 'base_template.html.twig' %}
-    {% block title %}{{recette.0.nom}} - {{ constant('WEBSITE_TITLE')}}{% endblock %}
+    {% block title %}{{recette.nom}} - {{ constant('WEBSITE_TITLE')}}{% endblock %}
 
 {% block content %}
     <main>
-        <h1>{{recette.0.nom}}</h1>
+        <h1>{{recette.nom}}</h1>
 <!--                Affichage de la description de la recette et de l'image-->
         <div class="row">
             <div class="col-md-9">
-                <img src="image/{{recette.0.image}}"  alt="">
-                <p>{{recette.0.description}}</p>
+                <img src="image/{{recette.image}}"  alt="">
+                <p>{{recette.description}}</p>
 
 
             </div>
@@ -18,8 +18,8 @@
                 <ul>
     
 
-                    {% for ingredient in recette %}
-                        <li>{{ingredient.ingredient_nom}} - {{ingredient.quantite}}</li>
+                    {% for ingredientQuantifie in recette.ingredientQuantifies %}
+                        <li>{{ingredientQuantifie.ingredient.nom}} - {{ingredientQuantifie.quantite}}</li>
                     {% endfor %}
 
                     

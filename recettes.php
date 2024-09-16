@@ -20,7 +20,7 @@ $managerRecette = new RecetteDao($pdo);
 if ($idCategorie == null) {
     $recettes = $managerRecette->findAll();
 } else {
-    $recettes = $managerRecette->findByCategorie($idCategorie);
+    $recettes = $managerRecette->findByCategorieWithDetail($idCategorie);
 }
 
 //Génère la vue

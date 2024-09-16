@@ -7,13 +7,16 @@ class Recette{
     private null|string $description;
     private null|string $image;
     private null|Categorie $categorie;
+    private null|array $ingredientQuantifies; 
 
-    public function __construct(?int $id = null, ?string $nom = null, ?string $description = null, ?string $image = null, ?Categorie $categorie = null){
+    public function __construct(?int $id = null, ?string $nom = null, ?string $description = null, ?string $image = null, ?Categorie $categorie = null, 
+    ?array $ingredientQuantifies = null){
         $this->id = $id;
         $this->nom = $nom;
         $this->description = $description;
         $this->image = $image;
         $this->categorie = $categorie;
+        $this->ingredientQuantifies = $ingredientQuantifies;
     }
 
     
@@ -106,6 +109,24 @@ class Recette{
     public function setCategorie(?Categorie $categorie): void
     {
         $this->categorie = $categorie;
+
+    }
+
+    /**
+     * Get the value of ingredientQuantifies
+     */ 
+    public function getIngredientQuantifies(): ?array
+    {
+        return $this->ingredientQuantifies;
+    }
+
+    /**
+     * Set the value of ingredientQuantifies
+     *
+     */ 
+    public function setIngredientQuantifies(?array $ingredientQuantifies): void
+    {
+        $this->ingredientQuantifies = $ingredientQuantifies;
 
     }
 }
