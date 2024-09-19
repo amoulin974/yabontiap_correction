@@ -16,7 +16,7 @@
             {% for recette in recettes %}           
 
                 <!--Les cartes-->
-                <a href="recette.php?id_recette={{recette.id}}" class="col mb-3">
+                <a href="index.php?controleur=recette&methode=afficher&id_recette={{recette.id}}" class="col mb-3">
                     <div class="card" style="width: 18rem;">
                         <img src="image/{{recette.image}}" class="card-img-top" alt="">
                         <div class="card-body bg-primary">
