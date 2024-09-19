@@ -47,4 +47,21 @@ class ControllerRecette extends Controller{
             'menu' => 'recettes'
         ));
     }
+
+    public function listerTableau(){
+        $managerRecette = new RecetteDao($this->getPdo());
+        $recettes = $managerRecette->findAllWithDetail();
+
+
+
+
+        //Générer la vue
+        $template = $this->getTwig()->load('recettes_tableau.html.twig');
+
+        echo $template->render(array(
+            'recettes' => $recettes,
+            'menu' => 'recettes_tableau'
+
+        ));
+    }
 }

@@ -25,7 +25,7 @@
         {% for recette in recettes %}           
             <tr>
                 <td><img src='image/{{recette.image}}' alt=""></td>
-                <td><a href="recette.php?id_recette={{recette.id}}">{{recette.nom}}</a></td>
+                <td><a href="index.php?controleur=recette&methode=afficher&id_recette={{recette.id}}">{{recette.nom}}</a></td>
                 <td>{{recette.categorie.nom}}</td>
 
             </tr>
