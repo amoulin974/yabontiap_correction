@@ -6,7 +6,19 @@ class ControllerCategorie extends Controller{
     }
 
     public function afficher(){
-        echo "afficher categorie";
+        $id_categorie = isset($_GET['id_categorie'])?$_GET['id_categorie']:null;
+
+ 
+
+        //Récupération de la catégorie
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categorie = $managerCategorie->find($id_categorie);
+
+
+        $template = $this->getTwig()->load('categorie.html.twig');
+        echo $template->render(array(
+                'categorie' => $categorie,
+            ));
     }
 
     public function lister(){
