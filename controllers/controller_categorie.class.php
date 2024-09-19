@@ -26,4 +26,17 @@ class ControllerCategorie extends Controller{
             // 'description' => "Le site des recettes de cuisine de l'IUT de Bayonne"
         ));
     }
+
+    public function listerTableau(){
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categories = $managerCategorie->findAll();
+
+
+        //Génération de la vue
+        $template = $this->getTwig()->load('categories_tableau.html.twig');
+        echo $template->render(array(
+                'categories' => $categories,
+                'menu' => 'categories_tableau'
+            ));
+    }
 }
