@@ -10,7 +10,7 @@
                 {% for categorie in categories %}
 
                 <!--Les cartes-->
-                <a href="recettes.php?id_categorie={{categorie.id}}" class="col mb-3">
+                <a href="index.php?controleur=recette&methode=lister&id_categorie={{categorie.id}}" class="col mb-3">
                     <div class="card" style="width: 18rem;">
                         <img src="image/{{categorie.image}}" class="card-img-top" alt="">
                         <div class="card-body bg-primary">

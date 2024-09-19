@@ -10,6 +10,20 @@ class ControllerCategorie extends Controller{
     }
 
     public function lister(){
-        echo "lister categorie";
+        //recupération des catégories
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $tableau = $managerCategorie->findAllAssoc();
+        $categories = $managerCategorie->hydrateAll($tableau);
+
+        //Choix du template
+        $template = $this->getTwig()->load('index.html.twig');
+
+
+        //Affichage de la page
+        echo $template->render(array(
+            'categories' => $categories,
+            'menu' => 'categories',
+            // 'description' => "Le site des recettes de cuisine de l'IUT de Bayonne"
+        ));
     }
 }
