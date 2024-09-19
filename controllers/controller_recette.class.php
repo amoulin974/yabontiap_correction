@@ -6,7 +6,21 @@ class ControllerRecette extends Controller{
     }
 
     public function afficher(){
-        echo "afficher recette";
+        $id_recette = isset($_GET['id_recette'])?$_GET['id_recette']:null;
+
+
+
+        //Recupere les recettes à l'aide de la méthode findWithDetail() de RecetteDao
+        $managerRecette = new RecetteDao($this->getPdo());
+        $recette = $managerRecette->findWithDetail($id_recette);
+
+        //Génération de la vue
+        $template = $this->getTwig()->load('recette.html.twig');
+
+        echo $template->render(array(
+            'recette' => $recette,
+            'menu' => 'recettes'
+        ));
     }
 
     public function lister(){
